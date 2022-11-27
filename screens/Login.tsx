@@ -1,16 +1,30 @@
 import React, { FC } from "react";
-import { Text } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import GoogleButton from "../components/GoogleButton";
 import FacebookButton from "../components/FacebookButton";
 
 const Login: FC = () => {
   return (
-    <>
-      <Text> Login </Text>
-      <GoogleButton />
-      <FacebookButton />
-    </>
+    <View style={style.container}>
+      <View style={style.body}>
+        <GoogleButton />
+        <FacebookButton />
+      </View>
+    </View>
   );
 };
 
 export default Login;
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  body: {
+    width: 200,
+    height: 100,
+    justifyContent: "space-around",
+  },
+});

@@ -1,33 +1,42 @@
-import { FC, useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { ResponseType } from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import * as Facebook from "expo-auth-session/providers/facebook";
-import { Button } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { AuthContext } from "../context/auth";
+import { getCred } from "../utls";
 
 WebBrowser.maybeCompleteAuthSession();
 
-const clientId = "1307790229972303";
-
 const FacebookButton: FC = () => {
+  const { setCredentials } = useContext(AuthContext);
   const [request, response, promptAsync] = Facebook.useAuthRequest({
-    clientId,
-    responseType: ResponseType.Code,
+    clientId: getCred('FB_CLIENT_ID'),
+    responseType: ResponseType.Token,
   });
 
   useEffect(() => {
-    console.log(response);
-    if (response?.type === "success") {
-      const { authentication } = response;
+    if (response?.type === "success" && response.authentication?.accessToken) {
+    
+      setCredentials({
+        token: response.authentication.accessToken,
+        provider: "Facebook",
+      });
     }
   }, [response]);
+
   return (
-    <Button
+    <FontAwesome.Button
+      name="facebook"
+      backgroundColor="#4285F4"
       disabled={!request}
-      title="Login By Facebook"
+      style={{ fontFamily: "Roboto" }}
       onPress={() => {
         promptAsync();
       }}
-    />
+    >
+      Login with Facebook
+    </FontAwesome.Button>
   );
 };
 

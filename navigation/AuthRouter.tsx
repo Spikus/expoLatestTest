@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { AuthContext } from "../context/auth";
 import Logged from "../screens/Logged";
 import Login from "../screens/Login";
 
@@ -11,10 +12,10 @@ type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AuthRouter: FC = () => {
-  const isLogged = false;
+  const { isAuthorized } = useContext(AuthContext);
   return (
     <Stack.Navigator>
-      {isLogged ? (
+      {isAuthorized ? (
         <Stack.Screen name="Logged" component={Logged} />
       ) : (
         <Stack.Screen name="Login" component={Login} />
