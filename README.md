@@ -63,6 +63,7 @@ To run this project locally, you will need to add the following environment vari
 `FB_CLIENT_ID`
 `GOOGLE_GUID_EXPO`
 `GOOGLE_GUID_WEB`
+`GOOGLE_GUID_ANDROID`
 
 
 ## Deployment

@@ -8,7 +8,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "expolatesttest",
+    "scheme": "com.danylyehorov.expolatestest",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.danylyehorov.expoLatestTest"
+      "package": "com.danylyehorov.expolatestest"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -13,6 +13,7 @@ const GoogleButton: FC = () => {
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: getCred('GOOGLE_GUID_EXPO'),
     webClientId: getCred('GOOGLE_GUID_WEB'),
+    androidClientId: getCred('GOOGLE_GUID_ANDROID')
   });
 
   useEffect(() => {
