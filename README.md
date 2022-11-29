@@ -81,7 +81,11 @@ To build your first build:
 ```
 ## Web Version
 
+To run App in web , please note that for Web tokens keep in session.store
 
+```bash
+  npm run web
+```
 
 
 ## Acknowledgements
