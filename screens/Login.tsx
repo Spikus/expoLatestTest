@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import GoogleButton from "../components/GoogleButton";
 import FacebookButton from "../components/FacebookButton";
 
