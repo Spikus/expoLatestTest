@@ -12,7 +12,9 @@ type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AuthRouter: FC = () => {
-  const { isAuthorized } = useContext(AuthContext);
+  const { isAuthorized, isLoaded } = useContext(AuthContext);
+  if (!isLoaded) return null;
+
   return (
     <Stack.Navigator>
       {isAuthorized ? (

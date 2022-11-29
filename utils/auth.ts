@@ -1,7 +1,4 @@
-import envs from "../envs";
-
-export const getCred = (name: keyof typeof envs) =>
-  process.env.NODE_ENV === "development" ? envs[name] : process.env[name];
+import { AuthCredentials } from "../interface";
 
 export const fetchGoogleUserInfo = async (token: string) => {
   const response = await fetch(
@@ -34,4 +31,27 @@ export const fetchFaceBookUserInfo = async (token: string) => {
   );
 
   return await response.json();
+};
+
+export const getUserData = async (
+  credentials: AuthCredentials,
+  onSuccess: (data: string) => void,
+  onError: () => void
+): Promise<void> => {
+  const { token, provider } = credentials;
+  if (!token || !provider) return;
+
+  try {
+    const data =
+      provider === "Google"
+        ? await fetchGoogleUserInfo(token)
+        : await fetchFaceBookUserInfo(token);
+    if (data.error) {
+      onError();
+    } else {
+      onSuccess(data.email);
+    }
+  } catch (e) {
+    onError();
+  }
 };
