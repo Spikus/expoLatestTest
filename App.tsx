@@ -4,10 +4,8 @@ import { useColorScheme } from "react-native";
 import Navigation from "./navigation";
 import React from "react";
 import { AuthProvider } from "./context/auth";
-import * as SplashScreen from "expo-splash-screen";
 
 export default function App() {
-  SplashScreen.preventAutoHideAsync();
   const colorScheme = useColorScheme();
 
   return (

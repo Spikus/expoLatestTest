@@ -1,4 +1,4 @@
-import * as SplashScreen from "expo-splash-screen";
+
 import React, {
   createContext,
   useState,
@@ -57,7 +57,6 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       console.log(e);
     } finally {
       setLoaded(true);
-      SplashScreen.hideAsync();
     }
   }, []);
 
